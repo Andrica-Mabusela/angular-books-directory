@@ -1,0 +1,80 @@
+#register-wrapper {
+    width: 70%;
+    display: flex;
+    position: absolute;
+    top: 20%;
+    border-radius: 10px;
+}
+
+.section-1 {
+    flex-basis: 60%;
+    padding: 15px;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.section-2{
+    flex-basis: 40%;
+    padding: 50px;
+    background-color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    flex-grow: 1;
+    flex-shrink: 2;
+}
+
+.section-2 label {
+    font-weight: 600;
+}
+
+.section-2 form button {
+    background-color: rgb(251, 203,60);
+    color: #333; 
+    font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+    #register-wrapper {
+        width: 80%;
+    }
+
+    .section-2 {
+        padding: 40px;
+    }
+}
+
+
+@media (max-width: 992px) {
+
+    .section-1 {
+        flex-basis: 50%;
+    }
+
+    .section-2 {
+        padding: 20px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    #register-wrapper {
+        width: 60%;
+    }
+
+    .section-1 {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    #register-wrapper {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    #register-wrapper {
+        width: 90%;
+    }
+}
