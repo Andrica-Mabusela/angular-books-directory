@@ -1,7 +1,7 @@
-.register-wrapper-container {
+.login-wrapper-container {
 }
 
-#register-wrapper {
+#login-wrapper {
   width: 70%;
   display: flex;
   position: absolute;
@@ -39,7 +39,7 @@
 }
 
 @media (max-width: 1200px) {
-  #register-wrapper {
+  #login-wrapper {
     width: 80%;
   }
 
@@ -59,7 +59,7 @@
 }
 
 @media (max-width: 768px) {
-  #register-wrapper {
+  #login-wrapper {
     width: 60%;
   }
 
@@ -69,13 +69,13 @@
 }
 
 @media (max-width: 700px) {
-  #register-wrapper {
+  #login-wrapper {
     width: 80%;
   }
 }
 
 @media (max-width: 576px) {
-  #register-wrapper {
+  #login-wrapper {
     width: 90%;
   }
 }
