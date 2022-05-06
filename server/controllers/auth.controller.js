@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 const maxAge = 10 * 60 * 1000
 
 // CREATE AUTH ACCESS TOKEN FROM USER CREDENTIALS
-const createAccessToken = id => jwt.sign({id}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1m'  })
+const createAccessToken = id => jwt.sign({id}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '2m'  } )
 
 
 // GET THE USER MODEL
@@ -46,11 +46,11 @@ module.exports.authController = {
             const newUser = await User.create(req.authenticatedUser)
             console.log('new user', newUser.dataValues)
 
-            const accessToken = createAccessToken(newUser.dataValues.user_id)
+            const authToken = createAccessToken(newUser.dataValues.user_id)
             // const refreshToken = createRefreshToken(newUser.dataValues.user_id)
 
-            res.cookie('access-token', accessToken, { httpOnly: true, sameSite: true, maxAge })
-            res.status(200).json({error: null, success: true, user: newUser.dataValues, token: accessToken})
+            res.cookie('auth-token', authToken, { httpOnly: true, sameSite: true, maxAge })
+            res.status(200).json({error: null, success: true, user: newUser.dataValues,  authToken})
 
         } catch(error) {
             console.log(error)
@@ -95,12 +95,12 @@ module.exports.authController = {
                 if( !isMatch ) throw new Error("Wrong phone number/password combination")
                 
                 // CREATE TOKEN
-                const accessToken = createAccessToken(user.user_id)
+                const authToken = createAccessToken(user.user_id)
 
                 // CREATE COOKIE
-                res.cookie('access-token', accessToken, { httpOnly: true, sameSite: true, maxAge })
+                res.cookie('auth-token', authToken, { httpOnly: true, sameSite: true, maxAge })
 
-                res.status(200).json({error: null, success: true, user, accessToken})
+                res.status(200).json({error: null, success: true, user, authToken})
 
             } catch(error) {
                 console.log(error)

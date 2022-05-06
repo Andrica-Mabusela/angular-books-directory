@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         console.log(response);
         if (response.success) {
           this.router.navigateByUrl('');
+          localStorage.setItem('auth-token', response.authToken)
         }
       });
     }

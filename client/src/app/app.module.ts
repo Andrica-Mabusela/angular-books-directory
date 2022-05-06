@@ -16,14 +16,22 @@ import {
 } from 'angularx-social-login';
 import { LoginComponent } from './authentication/pages/login/login.component';
 import { AuthServiceService } from './authentication/services/auth-service.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AuthInterceptorProvider } from './auth.interceptor';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent, RegisterComponent, LoginComponent, HomePageComponent, NavbarComponent],
   imports: [BrowserModule, AppRoutingModule, CommonModule, HttpClientModule, ReactiveFormsModule, FormsModule ],
   providers: [
     // AuthServiceService
+    // AuthInterceptorProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })
