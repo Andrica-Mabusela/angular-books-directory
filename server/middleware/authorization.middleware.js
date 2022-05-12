@@ -6,6 +6,8 @@ module.exports.isAuthorized = (req, res, next) => {
 
     jwt.verify(authToken, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '2m' }, (err, decoded) => {
         if(err) console.log(err.message)
-        console.log(decoded)
+        // if(err.message == 'jwt ')
+        console.log("decoded:", decoded)
+
     })
 }

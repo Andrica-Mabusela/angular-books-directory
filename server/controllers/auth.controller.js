@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 const maxAge = 10 * 60 * 1000
 
 // CREATE AUTH ACCESS TOKEN FROM USER CREDENTIALS
-const createAccessToken = id => jwt.sign({id}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '2m'  } )
+const createAccessToken = user => jwt.sign({user}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '2m'  } )
 
 
 // GET THE USER MODEL
@@ -46,7 +46,7 @@ module.exports.authController = {
             const newUser = await User.create(req.authenticatedUser)
             console.log('new user', newUser.dataValues)
 
-            const authToken = createAccessToken(newUser.dataValues.user_id)
+            const authToken = createAccessToken(newUser.dataValues)
             // const refreshToken = createRefreshToken(newUser.dataValues.user_id)
 
             res.cookie('auth-token', authToken, { httpOnly: true, sameSite: true, maxAge })
@@ -95,7 +95,7 @@ module.exports.authController = {
                 if( !isMatch ) throw new Error("Wrong phone number/password combination")
                 
                 // CREATE TOKEN
-                const authToken = createAccessToken(user.user_id)
+                const authToken = createAccessToken(user)
 
                 // CREATE COOKIE
                 res.cookie('auth-token', authToken, { httpOnly: true, sameSite: true, maxAge })

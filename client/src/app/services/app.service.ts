@@ -15,7 +15,10 @@ export class AppService {
   
   getBooks() {
     const authToken = localStorage.getItem('auth-token')
-    return  this.http.get(`${baseUrl}`,{ headers: new HttpHeaders({'Authorization': `${authToken}`})})
+   
+    const options =  { headers: new HttpHeaders({'Authorization': `${authToken}`})}
+    console.log('headers',options)
+    return  this.http.get(`${baseUrl}`, options)
   }
 
 }

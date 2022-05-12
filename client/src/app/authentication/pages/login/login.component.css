@@ -59,6 +59,75 @@
    text-decoration: none;
  }
 
+ .google-icon-svg {
+   width: 30px;
+   height: 30px;
+   /* border-radius: 50%; */
+ }
+
+.social-login {
+   text-align: center;
+}
+
+.social-login p {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: rgb(105, 105, 105);
+}
+
+.social-login p > span {
+  font-size: 25px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  color: darkgrey;
+  margin: 0 5px;
+}
+
+
+.form-control{
+    font-size: 17px;
+}
+
+/* 
+ .social-login p::before {
+    content: '. . .';
+    width: 30px;
+    height: 2px;
+    display: block;
+    background-color: #333; 
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 800;
+ } */
+
+ /* .social-login p::after {
+  content: '. . .';
+  width: 30px;
+  height: 2px;
+  display: block;
+   background-color: #333; 
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 800;
+} */
+
+
+.social-login .fa-facebook {
+  font-size: 30px;
+  margin: 13px;
+ }
+
 @media (max-width: 1200px) {
   #login-wrapper {
     width: 80%;
